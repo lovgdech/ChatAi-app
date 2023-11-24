@@ -58,13 +58,13 @@ function ChatAi() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${process.env.REACT_APP_CHAT_GPT_KEY}`,
           },
           body: JSON.stringify({
             model: "gpt-3.5-turbo",
             messages: tempMessages,
             temperature: 0.9,
-            max_tokens: 500,
+            max_tokens: 255,
           }),
         }
       );
@@ -107,7 +107,7 @@ function ChatAi() {
             disabled={isLoading ? true : false}
             className={`${isLoading ? cx("disable") : ""}`}
           >
-            {isLoading ? "Sending..." : "Ask"}
+            {isLoading ? "Sending..." : "Send"}
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </form>
